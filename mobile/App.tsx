@@ -1,4 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
+import 'react-native-gesture-handler';
 import { Widget } from './src/components/Widget';
 import { theme } from './src/theme';
 import { View } from 'react-native';
@@ -24,14 +25,13 @@ export default function App() {
       flex: 1,
       backgroundColor: theme.colors.background,
     }}>
-      
-      <Widget />
-
       <StatusBar 
       style="light"
       backgroundColor='transparent'
       translucent
       />
+      
+      <Widget />
     </View>
   );
 }
