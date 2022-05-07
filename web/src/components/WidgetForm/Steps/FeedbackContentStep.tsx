@@ -1,6 +1,7 @@
 import { ArrowLeft, Camera } from "phosphor-react";
 import { useState } from "react";
 import { FeedbackType, feedbackTypes } from "..";
+import { api } from "../../../lib/api";
 import { CloseButton } from "../../CloseButton";
 import { ScreenshotButton } from "../ScreenshotButton";
 
@@ -19,11 +20,12 @@ export function FeedbackContentStep({
     const [comment, setComment] = useState('');
     const feedbackTypeInfo = feedbackTypes[feedbackType];
 
-    function handleSubmitFeedback() {
-        console.log({
-            screenshot,
-            comment
-        })
+    async function handleSubmitFeedback() {
+        await api.post('/feedbacks', {
+            type: feedbackType,
+            comment,
+            screenshot
+        });
 
         onFeedbackSent();
     }
